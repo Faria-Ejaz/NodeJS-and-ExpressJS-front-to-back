@@ -1,0 +1,55 @@
+
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+                
+                <h1>Add Customer</h1>
+                <% if(errors != undefined){ %>
+                    <ul>
+                        <% errors.forEach(function(error){ %>
+                            <li><%= error.msg %></li>
+                       <% }) %>
+                    </ul>
+                <% } %>
+                <form method="post" action="/users/add">
+                    <label>First Name</label><br>
+                    <input type="text" name="firstname">
+                    <br>
+                    <label>Last Name</label><br>
+                    <input type="text" name="lastname">
+                    <br>
+                    <label>Email</label><br>
+                    <input type="text" name="email">
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+                <h1><%= title %></h1>
+                <ul>
+                <% users.forEach(function(user){ %>
+                     <li><%= user.firstname %> <%= user
+                        .lastname %> - <a href="#" class="deleteUser"
+                         data-id="<%= user._id %>">Delete</a></a></li>
+                <% }) %>
+                </ul>
+                
+        </div>
+    </main>
+
+    <footer>
+        <% include partials/footer %>
+    </footer>
+
+</body>
+</html>
